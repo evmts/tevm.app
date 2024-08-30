@@ -20,7 +20,7 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justfy-content: center;
+    justify-content: center;
     color: var(--primary-text-color);
 }
 
@@ -165,4 +165,4 @@ p {
     p {
         font-size: 1.25rem;
     }
-}i
+}
