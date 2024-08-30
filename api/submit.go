@@ -44,7 +44,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	err = insertSubmission(submission)
 
 	if err != nil {
-    if strings.Contains(err.Error(), `relation "submissions" does not exist`) {
+		if strings.Contains(err.Error(), `relation "submissions" does not exist`) {
 			// Table does not exist, create it and try again
 			err = createTable()
 			if err != nil {
