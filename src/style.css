@@ -1,0 +1,168 @@
+:root {
+    --primary-bg-color: #343434; /* Darker gray for the gradient */
+    --secondary-bg-color: #000000; /* Black as the primary background color */
+    --primary-text-color: #F0F0F0; /* Light gray text for high contrast */
+    --secondary-text-color:hsla(0,0%,100%,.65); /* Slightly darker gray for secondary text */
+    --button-bg-color: #FFFFFF; /* White button background */
+    --button-text-color: #000000; /* Black text on the button */
+    --input-bg-color: #2C2C2C; /* Darker gray for input fields */
+    --input-border-color: #4A4A4A; /* Medium gray border for inputs */
+    --transition-duration: 0.3s;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: ABC Diatype, Helvetica, arial, sans-serif;
+    min-height: 100vh;
+    min-width: 100vw;
+    background: radial-gradient(ellipse, var(--primary-bg-color), var(--secondary-bg-color));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justfy-content: center;
+    color: var(--primary-text-color);
+}
+
+.container {
+    text-align: center;
+    padding: 1rem;
+    max-width: 42rem;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity var(--transition-duration) ease, transform var(--transition-duration) ease;
+}
+
+h1 {
+    font-size: 3.6rem;
+    letter-spacing: -.01em;
+    line-height: 1.15;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.6rem;
+    letter-spacing: .0025em;
+    line-height: 1.4;
+    color: var(--secondary-text-color);
+    margin-bottom: 2rem;
+}
+
+.button {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.50rem;
+    cursor: pointer;
+    transition: all var(--transition-duration) ease;
+    max-width: 12rem;
+    align-self: center;
+}
+
+.button:hover {
+    background-color: #f7fafc;
+    transform: scale(1.05);
+}
+
+.form {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.textarea, .input {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--input-bg-color);
+    color: var(--primary-text-color);
+    border: 1px solid var(--input-border-color);
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    transition: border-color var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+}
+
+.textarea:focus, .input:focus {
+    border-color: #90cdf4;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+    outline: none;
+}
+
+.textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.checkbox {
+    margin-right: 0.5rem;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.5rem;
+    color: var(--primary-text-color);
+    text-decoration: none;
+    display: none;
+    transition: opacity var(--transition-duration) ease;
+}
+
+#applicationPage, #successPage {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom right, var(--primary-bg-color), var(--secondary-bg-color));
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity var(--transition-duration) ease, transform var(--transition-duration) ease;
+}
+
+#applicationPage.show, #successPage.show {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.button[disabled] {
+    background-color: #e2e8f0;
+    color: #a0aec0;
+    cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 3.75rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+    }
+}i

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tevm.app - Unify your onchain experience. Transform fragmented, insecure, and centralized on-chain apps into cohesive, secure, and decentralized experiences.">
+    <meta property="og:title" content="Tevm.app Teaser">
+    <meta property="og:description" content="Tevm.app - A decentralized platform and SDK empowering users and developers with local-first, permissionless integration and self-deployment capabilities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tevm.app">
+    <meta property="og:image" content="https://tevm.app/og-image.jpg">
+    <title>Tevm.app Teaser</title>
+  </head>
+  <body>
+    <div class="container" id="mainPage">
+        <h1>Elevate your onchain experience with Tevm.app</h1>
+        <p>Today onchain applications are fragmented, centralized, and insecure.</p>
+        <p>Tevm.app browser transforms fragmented onchain apps into cohesive, secure, and composable experiences, empowering users and developers with customizable, local-first, permissionless integration of onchain apps.</p>
+        <button class="button" id="showFormButton" aria-label="Apply to join pilot">
+            Apply to join pilot
+        </button>
+    </div>
+    <div id="applicationPage">
+        <a href="#" class="back-arrow" id="backButton" aria-label="Go back">←</a>
+        <div class="container">
+            <form class="form" id="applicationForm">
+                <div class="form-group">
+                    <label for="appsTextarea">What onchain apps do you use regularly?</label>
+                    <textarea id="appsTextarea" class="textarea" placeholder="What onchain apps do you use regularly?" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="emailInput">Email address</label>
+                    <input type="email" id="emailInput" class="input" placeholder="Email address" required>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="developer" class="checkbox">
+                    <label for="developer">I am a developer</label>
+                </div>
+                <button type="submit" class="button" style="width: 100%;">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="successPage">
+        <div class="container">
+            <div class="success-icon">✅</div>
+            <h1>Application Submitted!</h1>
+            <p>Thank you for your interest in Tevm.app. We've received your application and will be in touch soon.</p>
+            <button class="button" id="backToMainButton">Back to Home</button>
+        </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
