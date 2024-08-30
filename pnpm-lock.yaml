@@ -9,10 +9,10 @@ importers:
   .:
     devDependencies:
       typescript:
-        specifier: ^5.5.3
+        specifier: ^5.5.4
         version: 5.5.4
       vite:
-        specifier: ^5.4.1
+        specifier: ^5.4.2
         version: 5.4.2
 
 packages:
