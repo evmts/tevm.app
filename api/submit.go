@@ -41,14 +41,52 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	query := `INSERT INTO submissions (email, apps, is_developer) VALUES ($1, $2, $3)`
-	_, err = db.Exec(query, submission.Email, submission.Apps, submission.IsDeveloper)
+	err = insertSubmission(submission)
+
 	if err != nil {
-		http.Error(w, "Internal server error", http.StatusInternalServerError)
-		fmt.Println("Error inserting data:", err)
-		return
+    if strings.Contains(err.Error(), `pq: relation "submissions" does not exist`) {
+			// Table does not exist, create it and try again
+			err = createTable()
+			if err != nil {
+				http.Error(w, "Internal server error", http.StatusInternalServerError)
+				fmt.Println("Error creating submissions table:", err)
+				return
+			}
+
+			// Try inserting again after creating the table
+			err = insertSubmission(submission)
+			if err != nil {
+				http.Error(w, "Internal server error", http.StatusInternalServerError)
+				fmt.Println("Error inserting data after creating table:", err)
+				return
+			}
+		} else {
+			http.Error(w, "Internal server error", http.StatusInternalServerError)
+			fmt.Println("Error inserting data:", err)
+			return
+		}
 	}
 
 	w.WriteHeader(http.StatusCreated)
 	w.Write([]byte("Form submission successful!"))
+}
+
+func insertSubmission(submission FormSubmission) error {
+	query := `INSERT INTO submissions (email, apps, is_developer) VALUES ($1, $2, $3)`
+	_, err := db.Exec(query, submission.Email, submission.Apps, submission.IsDeveloper)
+	return err
+}
+
+func createTable() error {
+	createTableQuery := `
+	CREATE TABLE IF NOT EXISTS submissions (
+		id SERIAL PRIMARY KEY,
+		email VARCHAR(255) NOT NULL,
+		apps TEXT NOT NULL,
+		is_developer BOOLEAN NOT NULL,
+		submitted_at TIMESTAMPTZ DEFAULT NOW()
+	);
+	`
+	_, err := db.Exec(createTableQuery)
+	return err
 }
