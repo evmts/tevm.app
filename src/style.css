@@ -24,6 +24,31 @@ body, html {
     color: var(--primary-text-color);
 }
 
+a {
+    color: #5C2D91; 
+    text-decoration: none; 
+    font-weight: 500; 
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover {
+    color: #8A2BE2; 
+    text-decoration: underline; 
+}
+
+a:visited {
+    color: #4B0082; 
+}
+
+a:active {
+    color: #7B68EE; 
+}
+
+img {
+    align-self: center;
+    justify-self: center;
+}
+
 .container {
     text-align: center;
     padding: 1rem;
