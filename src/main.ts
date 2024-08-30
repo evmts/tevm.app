@@ -52,7 +52,7 @@ applicationForm.addEventListener('submit', function(e) {
   };
 
   // Send the form data to the server
-  fetch('/api/index', {
+  fetch('/api/submit', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
