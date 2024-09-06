@@ -27,8 +27,10 @@ type Page = typeof pages[number];
 function showPage(pageToShow: Page) {
   pages.forEach(page => {
     page.classList.remove('show');
+    page.style.display = 'none';
   });
   pageToShow.classList.add('show');
+  pageToShow.style.display = 'block';
   (backButton as HTMLButtonElement).style.display = pageToShow === applicationPage ? 'block' : 'none';
 }
 
